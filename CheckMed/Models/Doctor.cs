@@ -1,4 +1,4 @@
-namespace CheckMed.Doctors
+namespace CheckMed.Models
 {
     public class Doctor
     {

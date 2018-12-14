@@ -2,26 +2,43 @@ using CheckMed.Enums;
 
 namespace CheckMed.MedClient
 {
-    internal class ClientCommand
+    public class ClientCommand
     {
-        public string Body { get; private set; } = "";
+        private string _body = "";
 
-        public ClientCommand AddMenuCommand(Commands command)
+        public ClientCommand AddMenuCode(Commands command)
         {
             _addBodyKeys("COMMAND", command.GetHashCode().ToString());
             return this;
         }
 
-        public ClientCommand AddSpecCommand(string specKey)
+        public ClientCommand AddSpecCode(string specKey)
         {
             _addBodyKeys("CODESPEC", specKey);
             return this;
         }
+
+        public ClientCommand AddDoctorCode(string docCode)
+        {
+            _addBodyKeys("CODEMED", docCode);
+            return this;
+        }
+
+        public ClientCommand AddAnyTimeCommand()
+        {
+            _addBodyKeys("DATE", "31/12/9999");
+            return this;
+        }
+
+        public string ToForm()
+        {
+            return _body;
+        }
         
         private void _addBodyKeys(string key, string value)
         {
-            if (Body.Length != 0) Body += "&";
-            Body += key + "=" + value;
+            if (_body.Length != 0) _body += "&";
+            _body += key + "=" + value;
         }
     }
 }

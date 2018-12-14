@@ -1,5 +1,8 @@
 namespace CheckMed.Enums
 {
+    /*
+     * Команды меню для роутинга по сайту
+     */
     public enum Commands
     {
         GetSpecs = 2,
