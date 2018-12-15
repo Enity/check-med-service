@@ -4,6 +4,8 @@ using CheckMed;
 
 namespace ConsoleApi
 {
+    
+    // TODO
     static class Program
     {
         private static void Main(string[] args)
@@ -13,10 +15,9 @@ namespace ConsoleApi
 
         private static async Task Check()
         {
-            var service = new CheckMedService("http://94.19.37.202:3008");
+            var service = new CheckMedService();
+            service.SetUri("http://94.19.37.202:3008");
             var specs = await service.GetSpecialtiesAsync();
-            var docs = await service.GetDoctorsBySpec(specs[2]);
-            var tickets = await service.GetTicketsByDoc(docs[0]);
             Console.ReadKey();
         }
     }

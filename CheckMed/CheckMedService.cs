@@ -7,11 +7,11 @@ namespace CheckMed
 {
     public class CheckMedService
     {
-        private readonly string _uri;
+        private string _uri;
 
-        public CheckMedService(string hospitalUri)
+        public void SetUri(string uri)
         {
-            _uri = hospitalUri + "/cgi-bin/tcgi1.exe";
+            _uri = uri + "/cgi-bin/tcgi1.exe";
         }
         
         public async Task<List<Specialty>> GetSpecialtiesAsync()
