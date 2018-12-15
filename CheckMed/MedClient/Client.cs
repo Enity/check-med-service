@@ -14,10 +14,9 @@ namespace CheckMed.MedClient
                 .AddMenuCode(Commands.GetSpecs);
 
             var result = await WebClient.PostAsync(uri, body);
-
-            var parsed = Parser.GetDataFromInput(result);
-            
-            return parsed
+   
+            return Parser
+                .GetDataFromInput(result)
                 .Select(valueTuple => new Specialty
                 {
                     Name = valueTuple.data,
@@ -33,10 +32,9 @@ namespace CheckMed.MedClient
                 .AddSpecCode(spec.Key);
 
             var result = await WebClient.PostAsync(uri, body);
-
-            var parsed = Parser.GetDataFromInput(result);
-
-            return parsed
+         
+            return Parser
+                .GetDataFromInput(result)
                 .Select(valueTuple => new Doctor
                 {
                     Name = valueTuple.data,
@@ -46,7 +44,7 @@ namespace CheckMed.MedClient
 
         }
         
-        public static async Task GetTicketsByDoc(string uri, Doctor doc)
+        public static async Task<List<Ticket>> GetTicketsByDoc(string uri, Doctor doc)
         {
             var body = new ClientCommand()
                 .AddMenuCode(Commands.GetTickets)
@@ -55,8 +53,15 @@ namespace CheckMed.MedClient
 
             var result = await WebClient.PostAsync(uri, body);
 
-            var parsed = Parser.GetDataFromInput(result);
-            
+            return Parser
+                .GetDataFromInput(result)
+                .Select(valueTuple => new Ticket
+                {
+                    DateTime = valueTuple.key,
+                    Available = valueTuple.data.Equals("F"),
+                    Reserved = valueTuple.data.Equals("R")
+                })
+                .ToList();
         }
     }
 }

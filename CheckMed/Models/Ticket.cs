@@ -4,5 +4,6 @@ namespace CheckMed.Models
     {
         public string DateTime { get; set; }
         public bool Available { get; set; }
+        public bool Reserved { get; set; }
     }
 }

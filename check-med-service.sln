@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckMed", "CheckMed\CheckM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApi", "ConsoleApi\ConsoleApi.csproj", "{36E11A80-6843-4279-AF01-053AB381FA14}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestApi", "RestApi\RestApi.csproj", "{DD6A7C10-B050-4A6E-83C6-D6E48A0AC42F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{36E11A80-6843-4279-AF01-053AB381FA14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{36E11A80-6843-4279-AF01-053AB381FA14}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{36E11A80-6843-4279-AF01-053AB381FA14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD6A7C10-B050-4A6E-83C6-D6E48A0AC42F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD6A7C10-B050-4A6E-83C6-D6E48A0AC42F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD6A7C10-B050-4A6E-83C6-D6E48A0AC42F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD6A7C10-B050-4A6E-83C6-D6E48A0AC42F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

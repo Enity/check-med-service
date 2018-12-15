@@ -13,10 +13,10 @@ namespace ConsoleApi
 
         private static async Task Check()
         {
-            var facade = new CheckMedFacade();
-            var specs = await facade.GetSpecialtiesAsync("http://94.19.37.202:3008/cgi-bin/tcgi1.exe");
-            var docs = await facade.GetDoctorsBySpec("http://94.19.37.202:3008/cgi-bin/tcgi1.exe", specs[2]);
-            await facade.GetTicketsByDoc("http://94.19.37.202:3008/cgi-bin/tcgi1.exe", docs[0]);
+            var service = new CheckMedService("http://94.19.37.202:3008");
+            var specs = await service.GetSpecialtiesAsync();
+            var docs = await service.GetDoctorsBySpec(specs[2]);
+            var tickets = await service.GetTicketsByDoc(docs[0]);
             Console.ReadKey();
         }
     }
