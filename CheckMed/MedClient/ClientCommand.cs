@@ -30,6 +30,12 @@ namespace CheckMed.MedClient
             return this;
         }
 
+        public ClientCommand AddAnyDoctorCommand()
+        {
+            _addBodyKeys("CODEMED", "Любой доктор");
+            return this;
+        }
+
         public string ToForm()
         {
             return _body;

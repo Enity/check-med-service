@@ -63,5 +63,26 @@ namespace CheckMed.MedClient
                 })
                 .ToList();
         }
+        
+        public static async Task<List<Ticket>> GetTicketsBySpec(string uri, Specialty spec)
+        {
+            var body = new ClientCommand()
+                .AddMenuCode(Commands.GetTickets)
+                .AddSpecCode(spec.Key)
+                .AddAnyDoctorCommand()
+                .AddAnyTimeCommand();
+
+            var result = await WebClient.PostAsync(uri, body);
+
+            return Parser
+                .GetDataFromInput(result)
+                .Select(valueTuple => new Ticket
+                {
+                    DateTime = valueTuple.key,
+                    Available = valueTuple.data.Equals("F"),
+                    Reserved = valueTuple.data.Equals("R")
+                })
+                .ToList();
+        }
     }
 }

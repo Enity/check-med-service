@@ -40,5 +40,10 @@ namespace CheckMed
         {
             return await Client.GetTicketsByDoc(_uri, doc);
         }
+
+        public async Task<List<Ticket>> GetTicketsBySpec(Specialty spec)
+        {
+            return await Client.GetTicketsBySpec(_uri, spec);
+        }
     }
 }
