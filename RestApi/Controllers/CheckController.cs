@@ -38,5 +38,12 @@ namespace RestApi.Controllers
             _med.SetUri(url);
             return await _med.GetTicketsByDoc(doctor);
         }
+        
+        [HttpGet]
+        public async Task<IEnumerable<Ticket>> TicketsSpec(string url, Specialty spec)
+        {
+            _med.SetUri(url);
+            return await _med.GetTicketsBySpec(spec);
+        }
     }
 }
