@@ -53,15 +53,7 @@ namespace CheckMed.MedClient
 
             var result = await WebClient.PostAsync(uri, body);
 
-            return Parser
-                .GetDataFromInput(result)
-                .Select(valueTuple => new Ticket
-                {
-                    DateTime = valueTuple.key,
-                    Available = valueTuple.data.Equals("F"),
-                    Reserved = valueTuple.data.Equals("R")
-                })
-                .ToList();
+            return Parser.GetTicketsFromHtml(result).ToList();
         }
         
         public static async Task<List<Ticket>> GetTicketsBySpec(string uri, Specialty spec)
@@ -74,15 +66,7 @@ namespace CheckMed.MedClient
 
             var result = await WebClient.PostAsync(uri, body);
 
-            return Parser
-                .GetDataFromInput(result)
-                .Select(valueTuple => new Ticket
-                {
-                    DateTime = valueTuple.key,
-                    Available = valueTuple.data.Equals("F"),
-                    Reserved = valueTuple.data.Equals("R")
-                })
-                .ToList();
+            return Parser.GetTicketsFromHtml(result).ToList();
         }
     }
 }
